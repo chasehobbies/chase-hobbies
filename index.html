@@ -76,12 +76,13 @@
 
         /* Hero */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -96,6 +97,15 @@
             background: radial-gradient(circle at 30% 70%, var(--accent-glow) 0%, transparent 50%);
             opacity: 0.3;
             animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-logo {
+            max-width: 600px;
+            width: 90%;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
         }
 
         @keyframes pulse {
@@ -295,10 +305,10 @@
     </header>
 
     <section class="hero">
+        <img src="https://raw.githubusercontent.com/chasehobbies/chase-hobbies/main/Chase%20Hobbies.jpg" alt="Chase Hobbies Logo" class="hero-logo">
         <div class="hero-content">
             <h1>Level Up Your <span>Collection</span></h1>
-            <p>Chase Hobbies is built for fans and collectors who want pieces that stand out. Our focus is on unique collectibles, display pieces, and fandom items that take collections to the next level.</p>
-            <p style="margin-top: 1rem; font-size: 1rem; color: var(--text-muted);">From character-inspired designs to creative collectibles and hobby items, we look for pieces that collectors will be proud to display.</p>
+            <p>From character-inspired designs to creative collectibles and hobby items, we curate pieces that collectors will be proud to display.</p>
             <a href="#categories" class="cta-btn">Explore Collections</a>
         </div>
     </section>

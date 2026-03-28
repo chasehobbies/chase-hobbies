@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chase Hobbies | Level Up Your Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0f13;
+            --bg-card: #1a1a22;
+            --accent: #ff6b35;
+            --accent-glow: #ff6b3580;
+            --text: #f5f5f7;
+            --text-muted: #9ca3af;
+            --gradient: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 19, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, var(--accent-glow) 0%, transparent 50%);
+            opacity: 0.3;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .category-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Features */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--bg-card);
+        }
+
+        .features-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature .icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .feature h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero { padding-top: 8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">Chase Hobbies</a>
+            <nav>
+                <a href="#categories">Shop</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Level Up Your <span>Collection</span></h1>
+            <p>Premium hobby supplies and collectibles that take your passion to the next level. Cards, miniatures, comics, games & more.</p>
+            <a href="#categories" class="cta-btn">Explore Collections</a>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <h2 class="section-title">Shop by <span>Category</span></h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="icon">🃏</div>
+                <h3>Trading Cards</h3>
+                <p>Pokémon, Sports Cards, Yu-Gi-Oh!, CCGs & supplies</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🎨</div>
+                <h3>Miniatures</h3>
+                <p>Warhammer, D&D, paints, tools & hobby supplies</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">📚</div>
+                <h3>Comics & Manga</h3>
+                <p>Single issues, TPBs, manga & collector's editions</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🎮</div>
+                <h3>Retro Games</h3>
+                <p>Classic video games, consoles & gaming merch</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🪙</div>
+                <h3>Coins & Stamps</h3>
+                <p>Numismatic supplies & philatelic accessories</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🏆</div>
+                <h3>Figurines & Statues</h3>
+                <p>Anime, pop culture & limited edition collectibles</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-inner">
+            <div class="feature">
+                <div class="icon">📦</div>
+                <h3>Fast Shipping</h3>
+                <p>Get your collectibles delivered safely & quickly</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🛡️</div>
+                <h3>Authenticity Guaranteed</h3>
+                <p>Every item verified genuine and collector-grade</p>
+            </div>
+            <div class="feature">
+                <div class="icon">💬</div>
+                <h3>Expert Support</h3>
+                <p>Need help? We know our stuff. Ask away.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-links">
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p class="copyright">© 2026 Chase Hobbies. All rights reserved.</p>
+    </footer>
+</body>
+</html>
